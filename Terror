@@ -1,0 +1,21 @@
+using LilyMagic;
+using System.Collections;          ( <--- Using is the reference. )
+
+public class example : MonoBehaviour {             ( <------ MonoBehaviour is from unity. It contains everything you write this { } )
+                                                    (<--- No clue what public float is. Google claims: The float keyword signifies a simple type that stores 32-bit floating-point values. The following table shows the precision and approximate range for the float type. )
+    public float maxSpeed = 8.0F;                   (<--- Theis lines is are to decide the speed your character can run) 
+    private Vector3 moveDirection = Vector3.zero;   (<--- Literally no clue, google is useless)
+        
+    void Update()  {    (<---- Something about every frame. I assume it updates the frames?)
+         CharacterController controller = GetComponent<CharacterController>();     (<------ ??? What's this elvish)
+             if (controller.isGrounded) {                                (<----- No clue, I suppose if the character you want to control is on the ground?)
+             moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")); (From this point on I don't understand what these lines mean)
+             moveDirection = transform.TransformDirection(moveDirection);   
+             moveDirection *= speed;
+
+             
+         }
+         moveDirection.y -= gravity * Time.deltaTime;        ( <----- Applying gravity!)
+         controller.Move(moveDirection * Time.deltaTime);     (GTFO)
+     }
+ }
